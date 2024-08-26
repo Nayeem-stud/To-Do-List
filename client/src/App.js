@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Button, Form, Alert } from 'react-bootstrap';
+import './App.css'; 
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -73,7 +74,7 @@ const App = () => {
   };
 
   return (
-    <Container className="mt-5 p-5" style={{ background: 'linear-gradient(135deg, #6e8efb, #a777e3)', borderRadius: '10px' }}>
+    <Container className="p-5" style={{ background: 'linear-gradient(135deg, #8093f1,  #b388eb)', borderRadius: '10px' }}>
       <h1 className="text-center mb-4">To-Do List</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Row className="mb-3">
@@ -120,9 +121,9 @@ const App = () => {
       </Row>
       <ul className="list-unstyled" style={{ width: '90%', margin: '0 auto' }}>
         {tasks.map(task => (
-          <li key={task._id} className="d-flex flex-column mb-2">
+          <li key={task._id} className="task-item d-flex flex-row mb-2">
             {editId === task._id ? (
-              <div className="d-flex flex-column mb-2">
+              <div className="d-flex flex-column w-100">
                 <Form.Control
                   type="text"
                   value={editText.name}
@@ -155,19 +156,20 @@ const App = () => {
                 <Button variant="success" onClick={editTask} className="mb-2">Save</Button>
               </div>
             ) : (
-              <div className="d-flex align-items-start mb-2">
-                <div className="flex-grow-1 me-3">
-                  <strong>{task.name}</strong><br />
+              <div className="task-content d-flex w-100">
+                <div className="task-details d-flex flex-column flex-shrink-1" style={{ flexBasis: '20%',marginRight: '20px'  }}>
+                  <strong>{task.name}</strong>
                   Start: {new Date(task.startTime).toLocaleString()}<br />
                   End: {new Date(task.endDate).toLocaleDateString()}
-                </div>
-                <div className="flex-grow-1">
-                  {task.description}
-                </div>
-                <div className="d-flex flex-column ms-3">
+                </div><br />
+                <div className="task-description flex-grow-1" style={{ flexBasis: '40%', marginRight: '20px' }}>
+                 {task.description}
+                 </div>
+                 <div className="task-buttons d-flex flex-column" style={{ flexBasis: '15%' }}>
                   <Button variant="warning" onClick={() => startEditing(task)} className="mb-2">Edit</Button>
                   <Button variant="danger" onClick={() => deleteTask(task._id)}>Delete</Button>
-                </div>
+                  </div>
+
               </div>
             )}
           </li>
