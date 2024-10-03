@@ -29,8 +29,7 @@ To-do list application where users can add, edit, and delete tasks.
 
 [GitHub Repository](https://github.com/Nayeem-stud/To-Do-List.git)
 
-## TO DO LIST
-![TO DO LIST](image)
+
 
 
 
