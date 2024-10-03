@@ -56,9 +56,13 @@ input[type="text"] {
 
 
 @media (max-width: 768px) {
+  .p-5{
+    margin: 0%;
+  }
   .Container{
     height: 100%;
     width: 100%;
+    margin: 0;
   }
   .task-content {
     flex-direction: column; 
